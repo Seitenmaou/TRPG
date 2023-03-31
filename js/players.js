@@ -5,6 +5,8 @@ addPlayerButton.id="addPlayerButton"
 
 let playerCount = 0
 
+const jobTypes = ['test1','test2','test3']
+
 addPlayerButton.addEventListener('click', () => {
     const newPlayer = document.createElement("div")
     newPlayer.className="player"
@@ -13,8 +15,19 @@ addPlayerButton.addEventListener('click', () => {
     newPlayer.id = 'player' + playerCount
     
     newPlayer.innerHTML = "<div class='playerName' ondblclick='this.contentEditable = true;'><p>Name</p></div>"
-    newPlayer.innerHTML += "<div class='playerJob' ondblclick='this.contentEditable = true;'><p>Job</p></div>"
-    newPlayer.innerHTML += "<div class='playerNum' ondblclick='this.contentEditable = true;'><p>Number</p></div>"
+
+    const playerJob = document.createElement("select")
+    for (let i = 0; i < jobTypes.length; i++){
+        playerJob.innerHTML += `<option value=${jobTypes[i]}>${jobTypes[i]}</option>`
+    }
+    newPlayer.append(playerJob)
+
+    const playerNum = document.createElement("select")
+    for (let i = 1; i <= 6; i++){
+        playerNum.innerHTML += `<option value=${i}>${i}</option>`
+    }
+    newPlayer.append(playerNum)
+
 
 
     const hpBar = document.createElement("div")
@@ -44,7 +57,6 @@ addPlayerButton.addEventListener('click', () => {
 
     removePlayerButton.addEventListener('click', () => {
         let removePlayer = 'removePlayer' + playerCount
-        console.log(removePlayer)
         removePlayerButton.remove()
         newPlayer.append(removePlayerConfirmButton)
     })

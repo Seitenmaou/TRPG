@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/main.css">
     <script src="../js/players.js" defer></script>
+    <script src="../js/menu.js" defer></script>
 </head>
 <body>
     <header>
@@ -21,14 +22,18 @@
     
     <main>
       <aside class="menu">
-        <h2>Sidebar</h2>
-        <p>Content goes here.</p>
+        <h2>Dice</h2>
+        <p>Click to roll.</p>
+        <div class="number-generator">
+            <button class="button" onclick="rollDice()"><div class="dice" id="number">0</div></button>
+          </div>
       </aside>
       
       <section class="content">
         <h1>Hakumonogatari</h1>
         <p>Content goes here.</p>
-
+          
+          
 
       </section>
       

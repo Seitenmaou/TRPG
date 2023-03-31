@@ -71,3 +71,19 @@ body {
     text-align: center;
   }
   
+  .number-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dice {
+    font-size: 5em;
+    margin: 1em;
+    padding: 0.5em;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+  }
+  
