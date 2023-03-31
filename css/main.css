@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  main {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  
+  .menu, .players, .side{
+    width: 15%;
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .player {
+    display:flex;
+    border-style: solid;
+    margin: 2px;
+  }
+  #playerTitle, #numPlayers, .playerName, .playerJob, .playerNum {
+    display: inline-block;
+    flex-grow: 1;
+    width: 25%;
+    height: 10px;
+    margin: 10px;
+    background-color: #ccc;
+  }
+  .player p {
+    margin:5px;
+}
+
+  .content {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
