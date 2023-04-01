@@ -5,7 +5,9 @@ addPlayerButton.id="addPlayerButton"
 
 let playerCount = 0
 
-const jobTypes = ['test1','test2','test3']
+const jobTypes = ['Screen Writer','Psychic','Editor', 'Scientist', 'Shaman','Neet']
+const jobTypeHp = [3,2,3,2,6,5]
+//probs should be object...
 
 addPlayerButton.addEventListener('click', () => {
     const newPlayer = document.createElement("div")
@@ -17,9 +19,14 @@ addPlayerButton.addEventListener('click', () => {
     newPlayer.innerHTML = "<div class='playerName' ondblclick='this.contentEditable = true;'><p>Name</p></div>"
 
     const playerJob = document.createElement("select")
+    playerJob.id=`player${playerCount}Job`
+
+    
+
     for (let i = 0; i < jobTypes.length; i++){
         playerJob.innerHTML += `<option value=${jobTypes[i]}>${jobTypes[i]}</option>`
     }
+    
     newPlayer.append(playerJob)
 
     const playerNum = document.createElement("select")
@@ -37,6 +44,7 @@ addPlayerButton.addEventListener('click', () => {
     plusHpButton.innerText = "+"
     const playerHp = document.createElement("p")
     playerHp.className = 'playerHp'
+    playerHp.id = `player${playerCount}Hp`
     playerHp.innerText = 0
     minusHpButton.addEventListener('click', () => {
         if (parseInt(playerHp.innerText) > 0) {
