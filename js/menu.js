@@ -19,10 +19,15 @@ const nextLine = document.createElement("button")
 nextLine.innerText = "Next"
 
 nextLine.addEventListener('click', () => {
+  if (currentLine < story.length) {
     const storyLine = document.getElementById("output")
     storyLine.innerText += '\n' + story[currentLine]
     currentLine++
     storyLine.scrollTop=storyLine.scrollHeight
+    
+    const storyProgress = document.getElementById("storyProgress")
+    storyProgress.innerText = `[${(currentLine/(story.length)*100).toFixed(2)}%]`
+  }
 })
 
 const menu = document.getElementsByClassName("menu")

@@ -52,6 +52,7 @@
             let story = []
             let currentLine = 2
             let keywords = []
+            let keywordsTotal = 0;
 
           function loadFile(event) {
             const input = event.target;
@@ -60,9 +61,11 @@
                const text = reader.result;
                story = text.split(/[\n]/)
                const storyInfo = document.getElementById('information')
-               storyInfo.innerHTML = `<h3>TITLE: ${story[0]}</h3>
-               <h4 class="keywords">KEYWORDS: </h4>`
                keywords = story[1].split(", ")
+               keywordsTotal = keywords.length
+               storyInfo.innerHTML = `<h3 class="information"> TITLE: ${story[0]}</h3><h3 class="information" id="storyProgress">[0%]</h3>
+               <h3 class="information"id="keywords"> KEYWORDS: </h3><h3 class="information" id="keywordsProgress">[0/${keywordsTotal}]</h3>`
+
             };
             reader.readAsText(input.files[0]);
           };
@@ -70,16 +73,28 @@
           function replaceWord() {
             const wordInput = document.getElementById("replaced").value
             const replacementInput = document.getElementById("replaceWith").value
+            let regex = new RegExp(wordInput, "gi")
             for (let i = 0; i < story.length; i++){
-              let regex = new RegExp(wordInput, "gi")
               story[i] = story[i].replace(regex, replacementInput)
             }
             const storyLine = document.getElementById("output")
             storyLine.innerText = ""
-            for (let i = 0; i< currentLine; i++){
+            for (let i = 2; i< currentLine; i++){
                 storyLine.innerText += '\n' + story[i]
             }
-            
+
+            for (let i =0 ; i< keywords.length; i++){
+              if (keywords[i].toUpperCase() === wordInput.toUpperCase()){
+                const keywordsFound = document.getElementById("keywords")
+                console.log(keywordsFound)
+                keywordsFound.innerText += "[" + keywords[i] + "]"
+                keywords.splice(i,1)
+                const keywordsRemaining = document.getElementById("keywordsProgress")
+                keywordsRemaining.innerText = `[${keywordsTotal-keywords.length}/${keywordsTotal}]`
+              }
+            }
+            document.getElementById("replaced").value = ""
+            document.getElementById("replaceWith").value = ""
 
         }
             
