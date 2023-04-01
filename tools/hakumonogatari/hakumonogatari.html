@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <script src="../js/players.js" defer></script>
-    <script src="../js/menu.js" defer></script>
+    <title>Hakumonogatari Tool</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="./js/players.js" defer></script>
+    <script src="./js/menu.js" defer></script>
 </head>
 <body>
     <header>
@@ -40,6 +40,7 @@
       
       <section class="content">
         <h1>Hakumonogatari</h1>
+        <a href="./rules.html">Rules</a>
         <input type="file" onchange="loadFile(event)">
         <div id="information">
         </div>
@@ -95,7 +96,8 @@
             }
             document.getElementById("replaced").value = ""
             document.getElementById("replaceWith").value = ""
-
+            
+            storyLine.scrollTop=storyLine.scrollHeight
         }
             
           
