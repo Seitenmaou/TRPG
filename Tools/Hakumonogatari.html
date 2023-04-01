@@ -41,6 +41,8 @@
       <section class="content">
         <h1>Hakumonogatari</h1>
         <input type="file" onchange="loadFile(event)">
+        <div id="information">
+        </div>
         <div id="output"></div>
         <div class="currentLine">
 
@@ -48,15 +50,19 @@
         
         <script>
             let story = []
-            let currentLine = 0
+            let currentLine = 2
+            let keywords = []
+
           function loadFile(event) {
             const input = event.target;
             const reader = new FileReader();
             reader.onload = function(){
                const text = reader.result;
                story = text.split(/[\n]/)
-               //   const output = document.getElementById('output');
-               //   output.innerText = text;
+               const storyInfo = document.getElementById('information')
+               storyInfo.innerHTML = `<h3>TITLE: ${story[0]}</h3>
+               <h4 class="keywords">KEYWORDS: </h4>`
+               keywords = story[1].split(", ")
             };
             reader.readAsText(input.files[0]);
           };
@@ -65,13 +71,16 @@
             const wordInput = document.getElementById("replaced").value
             const replacementInput = document.getElementById("replaceWith").value
             for (let i = 0; i < story.length; i++){
-                story[i] = story[i].replace(wordInput, replacementInput)
+              let regex = new RegExp(wordInput, "gi")
+              story[i] = story[i].replace(regex, replacementInput)
             }
             const storyLine = document.getElementById("output")
             storyLine.innerText = ""
             for (let i = 0; i< currentLine; i++){
                 storyLine.innerText += '\n' + story[i]
             }
+            
+
         }
             
           
