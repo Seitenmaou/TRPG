@@ -14,3 +14,16 @@ function rollDice() {
     }
   }
   
+const nextLine = document.createElement("button")
+
+nextLine.innerText = "Next"
+
+nextLine.addEventListener('click', () => {
+    const storyLine = document.getElementById("output")
+    storyLine.innerText += '\n' + story[currentLine]
+    currentLine++
+    storyLine.scrollTop=storyLine.scrollHeight
+})
+
+const menu = document.getElementsByClassName("menu")
+menu[0].append(nextLine)

@@ -21,20 +21,61 @@
     </header>
     
     <main>
+        
       <aside class="menu">
         <h2>Dice</h2>
         <p>Click to roll.</p>
         <div class="number-generator">
             <button class="button" onclick="rollDice()"><div class="dice" id="number">0</div></button>
           </div>
+          <h2>Story Control</h2>
+            <input type="text" id="replaced">
+            <br/>
+            Change to
+            <br/>
+            <input type="text" id="replaceWith">
+            <br/>
+            <button onclick="replaceWord()">Change Word</button>
       </aside>
       
       <section class="content">
         <h1>Hakumonogatari</h1>
-        <p>Content goes here.</p>
-          
-          
+        <input type="file" onchange="loadFile(event)">
+        <div id="output"></div>
+        <div class="currentLine">
 
+        </div>
+        
+        <script>
+            let story = []
+            let currentLine = 0
+          function loadFile(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function(){
+               const text = reader.result;
+               story = text.split(/[\n]/)
+               //   const output = document.getElementById('output');
+               //   output.innerText = text;
+            };
+            reader.readAsText(input.files[0]);
+          };
+
+          function replaceWord() {
+            const wordInput = document.getElementById("replaced").value
+            const replacementInput = document.getElementById("replaceWith").value
+            for (let i = 0; i < story.length; i++){
+                story[i] = story[i].replace(wordInput, replacementInput)
+            }
+            const storyLine = document.getElementById("output")
+            storyLine.innerText = ""
+            for (let i = 0; i< currentLine; i++){
+                storyLine.innerText += '\n' + story[i]
+            }
+        }
+            
+          
+        </script>   
       </section>
       
       <aside class="players">
