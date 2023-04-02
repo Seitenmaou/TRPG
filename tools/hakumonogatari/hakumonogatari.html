@@ -83,7 +83,9 @@
 
           function replaceWord() {
             const wordInput = document.getElementById("replaced").value
-            const replacementInput = `<span style=background:lightgray>${document.getElementById("replaceWith").value}</span>`
+            //const replacementInput = `<span style="background:lightgray">${document.getElementById("replaceWith").value}</span>`
+            //theres a problem when you replace anywhre in "background:lightgray"
+            const replacementInput = `${document.getElementById("replaceWith").value}`
             let regex = new RegExp(wordInput, "gi")
             for (let i = 0; i < story.length; i++){
               story[i] = story[i].replace(regex, replacementInput)
