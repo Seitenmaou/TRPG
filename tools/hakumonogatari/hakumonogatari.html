@@ -44,7 +44,10 @@
         <input type="file" onchange="loadFile(event)">
         <div id="information">
         </div>
-        <div id="output"></div>
+        <div>
+          <p id="output"></p>
+        </div>
+        
         <div class="currentLine">
 
         </div>
@@ -80,7 +83,7 @@
 
           function replaceWord() {
             const wordInput = document.getElementById("replaced").value
-            const replacementInput = document.getElementById("replaceWith").value
+            const replacementInput = `<span style=background:lightgray>${document.getElementById("replaceWith").value}</span>`
             let regex = new RegExp(wordInput, "gi")
             for (let i = 0; i < story.length; i++){
               story[i] = story[i].replace(regex, replacementInput)
@@ -88,14 +91,14 @@
             
             storyLine.innerText = ""
             for (let i = 2; i< currentLine; i++){
-                storyLine.innerText += '\n' + story[i]
+                storyLine.innerHTML += `</p>${story[i]}<p>`
             }
 
             for (let i =0 ; i< keywords.length; i++){
               if (keywords[i].toUpperCase() === wordInput.toUpperCase()){
                 const keywordsFound = document.getElementById("keywords")
                 console.log(keywordsFound)
-                keywordsFound.innerText += "[" + keywords[i] + "]"
+                keywordsFound.innerText += `[${keywords[i]} -> ${document.getElementById("replaceWith").value}]`
                 keywords.splice(i,1)
                 const keywordsRemaining = document.getElementById("keywordsProgress")
                 keywordsRemaining.innerText = `[${keywordsTotal-keywords.length}/${keywordsTotal}]`

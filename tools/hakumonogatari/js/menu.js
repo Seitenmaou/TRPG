@@ -21,7 +21,7 @@ nextLine.innerText = "Next"
 nextLine.addEventListener('click', () => {
   if (currentLine < story.length) {
     const storyLine = document.getElementById("output")
-    storyLine.innerText += '\n' + story[currentLine]
+    storyLine.innerHTML += `</p>${story[currentLine]}<p>`
     currentLine++
     storyLine.scrollTop=storyLine.scrollHeight
     

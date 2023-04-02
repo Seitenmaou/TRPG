@@ -49,10 +49,14 @@ addPlayerButton.addEventListener('click', () => {
     minusHpButton.addEventListener('click', () => {
         if (parseInt(playerHp.innerText) > 0) {
             playerHp.innerText = parseInt(playerHp.innerText) - 1 
+        }else{
+            playerHp.parentElement.parentElement.style = "background-color:darkred"
         }
     })
     plusHpButton.addEventListener('click', () => {
         playerHp.innerText = parseInt(playerHp.innerText) + 1 
+        playerHp.parentElement.parentElement.style = "background-color:#ccc"
+
     })
 
     const removePlayerButton = document.createElement("button")
