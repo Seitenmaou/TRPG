@@ -5,7 +5,7 @@ addPlayerButton.id="addPlayerButton"
 
 let playerCount = 0
 
-const jobTypes = ['Screen Writer','Psychic','Editor', 'Scientist', 'Shaman','Neet']
+const jobTypes = ['Scripter','Psychic','Editor', 'Scientist', 'Shaman','Neet']
 const jobTypeHp = [3,2,3,2,6,5]
 //probs should be object...
 

@@ -5,6 +5,7 @@ body {
     margin: 0;
     font-weight: bold;
     font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   header {
@@ -58,6 +59,9 @@ body {
   .player p {
     margin:5px;
 }
+.playerHp{
+  font-size: 2em;
+}
 
   .content {
     flex-grow: 1;
@@ -109,4 +113,14 @@ body {
 
   .information {
     flex: 1;
+  }
+  select {
+    max-width: 100%;
+  }
+  option {
+    -moz-white-space: pre-wrap;
+    -o-white-space: pre-wrap;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
