@@ -50,12 +50,19 @@
         </div>
         
         <script>
+          const storyLine = document.getElementById("output")
             let story = []
             let currentLine = 2
             let keywords = []
             let keywordsTotal = 0;
 
           function loadFile(event) {
+            storyLine.innerText = ""
+            story = []
+            currentLine = 2
+            keywords = []
+            keywordsTotal = 0
+
             const input = event.target;
             const reader = new FileReader();
             reader.onload = function(){
@@ -78,7 +85,7 @@
             for (let i = 0; i < story.length; i++){
               story[i] = story[i].replace(regex, replacementInput)
             }
-            const storyLine = document.getElementById("output")
+            
             storyLine.innerText = ""
             for (let i = 2; i< currentLine; i++){
                 storyLine.innerText += '\n' + story[i]
